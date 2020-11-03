@@ -1,6 +1,55 @@
 {
-  "current": "Default",
+  "current": {
+    "sections": {
+      "hero-banner": {
+        "type": "hero-banner",
+        "settings": {
+          "img": "shopify:\/\/shop_images\/INTRO_IMG_1.png",
+          "title_img": "shopify:\/\/shop_images\/Vector.png",
+          "text_color": "#ffe801",
+          "subtitle": "<p>IMPROVE ALWAYS<br\/>CHANGE NEVER.<\/p>",
+          "cta_text": "DISCOVER",
+          "cta_url": "shopify:\/\/collections\/bags",
+          "cta_img": "shopify:\/\/shop_images\/CTA.png",
+          "cta_img_size": 18,
+          "cta_color": "#ffe801",
+          "label_text": "free shipping above 40€",
+          "label_backcolor": "#ffe801",
+          "label_color": "#000000"
+        }
+      },
+      "16043391936f98677d": {
+        "type": "featured-collections",
+        "blocks": {
+          "21ab6781-80d2-40bd-9b42-da57f23673ed": {
+            "type": "featured-collection",
+            "settings": {
+              "title": "COLOR",
+              "collection": "bags"
+            }
+          },
+          "e2e68e12-88ce-4890-a521-5dba8f4768a9": {
+            "type": "featured-collection",
+            "settings": {
+              "title": "CARE",
+              "collection": "womens"
+            }
+          }
+        },
+        "block_order": [
+          "21ab6781-80d2-40bd-9b42-da57f23673ed",
+          "e2e68e12-88ce-4890-a521-5dba8f4768a9"
+        ],
+        "settings": {
+          "title": "<p>EXPLORE OUR<br\/>PRODUCTS<\/p>"
+        }
+      }
+    },
+    "content_for_index": [
+      "16043391936f98677d"
+    ]
+  },
   "presets": {
-    "Default": { }
+    "Default": {}
   }
 }

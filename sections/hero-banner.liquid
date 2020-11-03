@@ -1,0 +1,125 @@
+<section class="hero-section uk-position-relative uk-background-cover uk-light"
+  data-src="{{ section.settings.img | img_url: 'small' }}" data-srcset="{{ section.settings.img | img_url: 'master' }},
+                  {{ section.settings.img | img_url: 'medium' }}" data-sizes="(min-width: 650px) 650px, 100vw" uk-img>
+  <div class="uk-text-center uk-position-bottom">
+    <div class="hero-sub">
+      {{ section.settings.subtitle }}
+    </div>
+    <a class="uk-link-reset" href="{{ section.settings.cta_url }}">
+      {{ section.settings.cta_text }}
+      {% if section.settings.cta_img %}
+      <img class="uk-position-relative" src="{{ section.settings.cta_img | img_url: '50x' }}">
+      {% endif %}
+    </a>
+    <div class="uk-label">
+      {{ section.settings.label_text }}
+    </div>
+  </div>
+</section>
+
+
+
+{% style %}
+
+  {% if section.settings.text_color %}
+
+    .hero-section{
+      color: {{ section.settings.text_color }};
+    }
+
+  {% endif %}
+
+  .hero-section .uk-label{
+    background-color: {{ section.settings.label_backcolor }};
+    color: {{ section.settings.label_color }};
+  }
+
+  .hero-section .uk-link-reset{
+    color: {{ section.settings.cta_color }};
+  }
+
+  .hero-section .uk-link-reset img{
+    max-width: {{ section.settings.cta_img_size }}px;
+  }
+
+
+{% endstyle %}
+
+
+{% schema %}
+{
+  "name": "Hero Banner",
+  "settings": [
+    {
+      "type":"header",
+      "content":"Hero Banner"
+    },
+    {
+      "type": "image_picker",
+      "id": "img",
+      "label": "Hero image"
+    },
+    {
+      "type": "richtext",
+      "id": "subtitle",
+      "label": "Hero subtitle",
+      "default": "<p>IMPROVE ALWAYS<br>CHANGE NEVER.</p>"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Hero text color"
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "CTA text",
+      "default": "Discover"
+    },
+    {
+      "type": "url",
+      "id": "cta_url",
+      "label": "CTA url"
+    },
+    {
+      "type": "image_picker",
+      "id": "cta_img",
+      "label": "CTA image"
+    },
+    {
+      "type": "range",
+      "id": "cta_img_size",
+      "min": 12,
+      "max": 50,
+      "step": 1,
+      "unit": "px",
+      "label": "CTA image size",
+      "default": 18
+    },
+    {
+      "type": "color",
+      "id": "cta_color",
+      "label": "CTA color",
+      "default": "#000000"
+    },
+    {
+      "type": "text",
+      "id": "label_text",
+      "label": "Label text",
+      "default": "free shipping above 40€"
+    },
+    {
+      "type": "color",
+      "id": "label_backcolor",
+      "label": "Label background color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "label_color",
+      "label": "Label color",
+      "default": "#000000"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,89 @@
+<section class="ui-container">
+
+    {{ section.settings.title }}
+
+
+    <ul class="uk-subnav uk-subnav-pill" uk-switcher="animation: uk-animation-fade;connect: .switcher-container">
+        {% for block in section.blocks %}
+            <li><a href="#">{{ block.settings.title }}</a></li>
+        {% endfor %}
+    </ul>
+
+    <ul class="uk-switcher uk-margin switcher-container ">
+        {% for block in section.blocks %}
+        <li {% if forloop.first %}class="uk-active"{% endif %}>
+            {% assign featured_collection = collections[block.settings.collection] %}
+                <div class="uk-position-relative uk-visible-toggle uk-light" uk-slider>
+
+                    <ul class="uk-slider-items uk-child-width-1-2 uk-child-width-1-3@m uk-grid">
+                        {% for product in featured_collection.products %}
+                        <li>
+                            <div class="uk-panel">
+                                <img src="{{ product.featured_image | img_url: 'medium'}}" alt="">
+                                <div class="uk-position-center uk-panel">
+                                    <h1>{{ product.title }}</h1>
+                                </div>
+                            </div>
+                        </li>
+                        {% endfor %}
+                    </ul>
+
+
+                    <a class="uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous
+                        uk-slider-item="previous"></a>
+                    <a class="uk-position-center-right uk-position-small uk-hidden-hover" href="#" uk-slidenav-next
+                        uk-slider-item="next"></a>
+
+                </div>
+        </li>
+        {% endfor %}
+    </ul>
+
+</section>
+    
+{% style %}
+
+{% endstyle %}
+    
+{% schema %}
+{
+    "name": "Featured Collections",
+    "settings": [
+    {
+        "type":"header",
+        "content":"Featured Collections"
+    },
+    {
+        "type": "richtext",
+        "id": "title",
+        "label": "Section title",
+        "default": "<p>EXPLORE OUR<br>PRODUCTS</p>"
+    }
+    ],
+    "blocks": [
+    {
+        "type": "featured-collection",
+        "name": "Featured Collection",
+        "settings": [
+            {
+                "type": "text",
+                "id": "title",
+                "label": "Collection title",
+                "info": "This text will show as the navigation link for the collection"
+            },
+            {
+                "type": "collection",
+                "id": "collection",
+                "label": "Collection"
+            }
+        ]
+    }
+],
+    "presets": [
+    {
+        "name": "Featured Collections",
+        "category": "Collections"
+    }
+    ]
+}
+{% endschema %}
