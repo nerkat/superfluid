@@ -7,18 +7,11 @@
   <meta name="description" content="{{ page_description | escape }}">
   <link rel="canonical" href="{{ canonical_url }}">
   <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
-  {{ content_for_header }}
-  
-  <!-- UIkit CSS -->
-  {{ 'uikit.min.css' | asset_url | stylesheet_tag }}
-
-  <!-- UIkit JS -->
-  {{ 'uikit.min.js' | asset_url | script_tag }}
-  {{ 'uikit-icons.min.js' | asset_url | script_tag }}
  
-  <!-- Header hook for plugins -->
-  {{ 'application.scss.css' | asset_url | stylesheet_tag }}
-  {{ 'application.js' | asset_url | script_tag }}
+  {{ content_for_header }}
+
+  {% render 'header-scripts'%}
+  {% render 'header-styles'%}
 
 </head>
 <body>

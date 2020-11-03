@@ -1,47 +1,82 @@
-<section class="ui-container">
+<section class="featured-collections">
 
-    {{ section.settings.title }}
+    <h2 class="uk-text-center">{{ section.settings.title }}</h2>
 
 
-    <ul class="uk-subnav uk-subnav-pill" uk-switcher="animation: uk-animation-fade;connect: .switcher-container">
+
+    <ul class="uk-subnav uk-subnav-pill" uk-switcher="animation: uk-animation-fade;connect: .switcher-container;swiping: false;">
+        <li><a href="#" class="uk-border-circle">{{ 'general.all' | t }}</a></li>
         {% for block in section.blocks %}
-            <li><a href="#">{{ block.settings.title }}</a></li>
+            <li><a href="#" class="uk-border-circle">{{ block.settings.title }}</a></li>
         {% endfor %}
     </ul>
 
-    <ul class="uk-switcher uk-margin switcher-container ">
-        {% for block in section.blocks %}
-        <li {% if forloop.first %}class="uk-active"{% endif %}>
-            {% assign featured_collection = collections[block.settings.collection] %}
-                <div class="uk-position-relative uk-visible-toggle uk-light" uk-slider>
-
-                    <ul class="uk-slider-items uk-child-width-1-2 uk-child-width-1-3@m uk-grid">
+    <ul class="uk-switcher uk-margin switcher-container">
+        <li class="uk-active">
+            <div class="uk-position-relative uk-visible-toggle" uk-slider>
+                <ul class="uk-slider-items uk-child-width-auto">
+                    {% for block in section.blocks %}
+                    {% assign featured_collection = collections[block.settings.collection] %}
                         {% for product in featured_collection.products %}
-                        <li>
-                            <div class="uk-panel">
-                                <img src="{{ product.featured_image | img_url: 'medium'}}" alt="">
-                                <div class="uk-position-center uk-panel">
-                                    <h1>{{ product.title }}</h1>
-                                </div>
-                            </div>
-                        </li>
+                            <li>
+                                {% include 'product-item' %}
+                            </li>
                         {% endfor %}
-                    </ul>
+                    {% endfor %}
+                </ul>
+                <a class="slider-arrow uk-position-center-right" href="#" uk-slider-item="next">
+                    <img src="{{ section.settings.next_img | img_url: '151x'}}">
+                </a>
+            </div>
+         </li>
+        {% for block in section.blocks %}
+        <li>
+            {% assign featured_collection = collections[block.settings.collection] %}
+            <div class="uk-position-relative uk-visible-toggle uk-light" uk-slider>
+
+                <ul class="uk-slider-items uk-child-width-auto">
+                    {% for product in featured_collection.products %}
+                    <li>
+                        {% include 'product-item' %}
+                    </li>
+                    {% endfor %}
+                </ul>
 
 
-                    <a class="uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous
-                        uk-slider-item="previous"></a>
-                    <a class="uk-position-center-right uk-position-small uk-hidden-hover" href="#" uk-slidenav-next
-                        uk-slider-item="next"></a>
+                <a class="slider-arrow uk-position-center-right" href="#" uk-slider-item="next">
+                    <img src="{{ section.settings.next_img | img_url: '151x'}}">
+                </a>
 
-                </div>
+            </div>
         </li>
         {% endfor %}
     </ul>
 
 </section>
-    
+
 {% style %}
+
+.uk-subnav-pill>.uk-active>a{
+    color: {{ section.settings.color }};
+    background-color: {{ section.settings.back_color }};
+}
+
+.uk-subnav-pill>*>:first-child{
+    color: {{ section.settings.color_text }};
+}
+
+.product-item{
+    background-color: {{ section.settings.item_back_color }};
+}
+
+.product-item .product-item-title{
+    color: {{ section.settings.item_title_color }};
+}
+
+.product-item .product-item-price{
+    color: {{ section.settings.item_price_color }};
+    background-color: {{ section.settings.item_price_back_color }};
+}
 
 {% endstyle %}
     
@@ -58,6 +93,46 @@
         "id": "title",
         "label": "Section title",
         "default": "<p>EXPLORE OUR<br>PRODUCTS</p>"
+    },
+    {
+        "type": "color",
+        "id": "color_text",
+        "label": "Navbar item text color"
+    },
+    {
+        "type": "color",
+        "id": "color",
+        "label": "Selected item color"
+    },
+    {
+        "type": "color",
+        "id": "back_color",
+        "label": "Selected item background color"
+    },
+    {
+        "type": "color",
+        "id": "item_title_color",
+        "label": "Slider item title color"
+    },
+    {
+        "type": "color",
+        "id": "item_price_color",
+        "label": "Slider item price color"
+    },
+    {
+        "type": "color",
+        "id": "item_price_back_color",
+        "label": "Slider item price background color"
+    },
+    {
+        "type": "color",
+        "id": "item_back_color",
+        "label": "Slider item background color"
+    },
+    {
+        "type": "image_picker",
+        "id": "next_img",
+        "label": "Slider arrow image"
     }
     ],
     "blocks": [

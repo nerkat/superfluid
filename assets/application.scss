@@ -16,10 +16,28 @@
   font-weight: bold;
 }
 
+
+// font size var | for future input from customizer
+$font-xs: 6px;
+$font-sm: 12px;
+$font-m: 16px;
+$font-l: 40px;
+$font-xl: 60px;
+
+// font letter spacing var | for future input from customizer
+$letter-xs: -0.05px;
+$letter-sm: -0.36px;
+$letter-m: -0.6px;
+$letter-l: -2px;
+$letter-xl: -2.9px;
+
 body * {
   font-family: "Alliance";
-  letter-spacing: -0.6px;
+  letter-spacing: $letter-m;
 }
+
+
+
 
 // break points vars & mixins
 
@@ -70,6 +88,15 @@ $screen-xl-min: 1200px;
   }
 }
 
+body {
+  
+  // TODO: REMOVE! for presentation purposes only
+  padding-bottom: 200px;
+
+  // removes horizontal scroll from site
+  overflow-x: hidden;
+}
+
 // layout config
 .uk-container-large {
   max-width: 1440px;
@@ -77,18 +104,17 @@ $screen-xl-min: 1200px;
 
 // hero section
 .hero-section {
-
   height: 695px;
 
   .hero-sub {
-    font-size: 60px;
+    font-size: $font-xl;
     font-style: normal;
     font-weight: 600;
     line-height: 51px;
     text-align: center;
     margin-bottom: 36px;
     p {
-      letter-spacing: -2.9px;
+      letter-spacing: $letter-xl;
       padding: 0 15px;
     }
   }
@@ -106,7 +132,7 @@ $screen-xl-min: 1200px;
   }
 
   .uk-label {
-    font-size: 16px;
+    font-size: $font-m;
     font-weight: bold;
     padding: 5px 7px 4px 4px;
     line-height: 20px;
@@ -116,8 +142,8 @@ $screen-xl-min: 1200px;
   @include lg {
     padding-bottom: 62.1%;
     height: 0;
-    
-    .hero-sub{
+
+    .hero-sub {
       margin-bottom: 38px;
     }
 
@@ -133,7 +159,115 @@ $screen-xl-min: 1200px;
       position: absolute;
       right: 60px;
       bottom: 29px;
-    }  
+    }
+  }
+}
+
+// featured collections section
+.featured-collections {
+  h2 {
+    font-size: $font-l;
+    font-weight: bold;
+    margin-top: 63px;
+    line-height: 34px;
+    margin-bottom: 0;
+
+    p {
+      letter-spacing: $letter-l;
+      margin-bottom: 0;
+    }
   }
 
+  .uk-slider {
+    margin-left: 15px;
+
+    .uk-slider-items {
+      li {
+        padding-left: 0;
+        margin-right: 15px;
+      }
+    }
+  }
+
+  .uk-subnav {
+    justify-content: center;
+    padding-left: 26px;
+    margin-top: 12px;
+    margin-bottom: 50px;
+
+    li {
+      padding-left: 5px;
+
+      a {
+        padding: 11px;
+        font-size: $font-m;
+        line-height: 27px;
+      }
+    }
+  }
+  
+  .slider-arrow{
+    margin-right: -28px;
+  }
+
+  @include lg {
+    h2 {
+      margin-top: 88px;
+    }
+
+    .uk-slider {
+      margin-left: 60px;
+      .uk-slider-items li {
+        margin-right: 60px;
+      }
+    }
+
+    .uk-subnav {
+      margin-bottom: 56px;
+    }
+
+    .slider-arrow{
+      margin-right: 60px;
+      margin-top: -6px;
+    }
+  }
+}
+
+// product item snippet
+.product-item {
+  height: 412px;
+  width: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .product-item-title {
+    font-size: $font-sm;
+    font-style: normal;
+    line-height: 21px;
+    text-align: center;
+    letter-spacing: $letter-sm;
+    margin-left: 32px;
+    margin-bottom: 28px;
+  }
+
+  .product-item-price {
+    transform: rotate(-3.17deg);
+    margin-right: 37px;
+    margin-bottom: 32px;
+    font-size: $font-sm;
+    padding: 1px 2px;
+
+    small {
+      position: relative;
+      top: -4px;
+      font-size: $font-xs;
+      right: -1px;
+    }
+  }
+
+  @include lg {
+    height: 494px;
+    width: 360px;
+  }
 }

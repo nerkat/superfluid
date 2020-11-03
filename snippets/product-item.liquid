@@ -1,0 +1,5 @@
+<div class="product-item">
+  <img src="{{ product.featured_image | img_url: '500x'}}" alt="">
+      <strong class="product-item-title uk-position-bottom-left">{{ product.title }}</strong>
+      <strong class="product-item-price uk-position-bottom-right">{{ product.price | money_without_currency | replace: '.',','}}<small>€</small></strong>
+</div>
